@@ -2,18 +2,21 @@ import { Injectable } from '@angular/core';
 import { User } from './classes/user';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Repository } from './classes/repository';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserServiceService {
 
-  userProfile!:any;
+  userProfile:any;
+  userRepo: any;
  
 
 
   constructor(private http:HttpClient,) {
     this.userProfile = new User ("","","","","",0,0,0,"",new Date);
+    this.userRepo = new Repository ("","","",0,"",new Date)
    }
 
    userRequest(username: string){
@@ -30,7 +33,6 @@ export class UserServiceService {
       created_at:Date
     }
     return new Promise<void> ((resolve,reject)=>{
-      
   
       this.http.get<ApiResponse>('https://api.github.com/users/'+username).toPromise().then((response)=>{
         this.userProfile = response;
@@ -43,7 +45,31 @@ export class UserServiceService {
       }
     );
   });
-}
+  }
+
+  repoRequest (username:string){
+    interface ApiResponseRepo{
+      name:string,
+      html_url:string ,
+      description:string,
+      forks:number,
+      language:string,
+      created_at:Date,
+    }
+    return new Promise<void>((resolve,reject)=>{
+      this.http.get<ApiResponseRepo>('https://api.github.com/users/'+username+'/repos').toPromise().then(
+        (results) => {
+          this.userRepo = results;
+          resolve();
+        },
+        (error) => {
+          console.log(error);
+          reject();
+        }
+      );
+    });
+
+  }
         // this.userProfile.url = response!.url;
         // this.userProfile.login = response!.login;
         // this.userProfile.html_url = response!.html_url;
