@@ -25,5 +25,20 @@ export class UserServiceService {
       avatar_url:string,
       created_at:Date
     }
+    let promise = new Promise<void>((resolve,reject)=>{
+      this.http.get<ApiResponse>(environment.apiUrl).toPromise().then(response=>{
+        this.quote.quote = response!.quote
+        this.quote.author = response!.author
+
+        resolve()
+      },
+      error=>{
+        this.quote.quote = "You got this"
+        this.quote.author = "Francis Monari"
+
+        reject(error)
+      })
+    })
+    return promise
    }
 }
