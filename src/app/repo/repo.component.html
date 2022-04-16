@@ -1,9 +1,9 @@
 
 <div class="container fluid">
-    <h1 style="text-align: center;">Repositories</h1>
+    <h1 style="text-align: center;"  appStrikethrough>Repositories</h1>
    <br>
     <div class="repo">
-        <div class="card" *ngFor="let repo of repository" style="width: 22rem;">
+        <div class="card"  *ngFor="let repo of repository" style="width: 22rem;" appHighlight>
             <div class="card-header">
                 <h5  class="card-title">{{repo.name}} </h5>
             </div>
@@ -28,5 +28,5 @@
 </div>
 
 
-
+appStrikethrough
 

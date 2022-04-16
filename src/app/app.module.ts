@@ -13,6 +13,8 @@ import { RepoComponent } from './repo/repo.component';
 import { SearchUserComponent } from './search-user/search-user.component';
 import { UsersComponent } from './users/users.component';
 import { DateCountPipe } from './date-count.pipe';
+import { StrikethroughDirective } from './strikethrough.directive';
+
 
 
 @NgModule({
@@ -26,6 +28,8 @@ import { DateCountPipe } from './date-count.pipe';
     RepoComponent,
     SearchUserComponent,
     DateCountPipe,
+    StrikethroughDirective,
+   
 
   ],
   imports: [
