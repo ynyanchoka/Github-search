@@ -1,18 +1,4 @@
-<!-- <div class=" container">
-    <h1>{{user?.public_repos}}</h1>
-   <h1>{{user?.name}}</h1>
-   <h1>{{user?.login}}</h1>
-   <h1>{{user?.following}}</h1>
-  
 
-</div>
-
-    <p>{{repository?.language}}</p>
-    <h1>{{repository?.description}}</h1>
-    <h1>{{repository?.name}}</h1>
-    <h1>{{repository?.created_at}}</h1> -->
-
-   
 <div class="container">
     <h2>Profile</h2>
     <div class="media">
@@ -31,5 +17,11 @@
             <button ><a class="btn btn-default btn-block" target="_blank" href="{{user.html_url}}">View Profile</a></button>
             </div>
         </div>
+    </div>
+
+    <!-- repositories -->
+    <div class=" repos">
+        <app-repo></app-repo>
+
     </div>
 </div>

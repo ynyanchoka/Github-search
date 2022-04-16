@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { SearchUserComponent } from '../search-user/search-user.component';
 
 @Component({
   selector: 'app-form',

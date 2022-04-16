@@ -1,0 +1,20 @@
+<div class="container">
+    <h2>Profile</h2>
+    <div class="media">
+        <img src={{userProfile.avatar_url}} class="mr-3 img-responsive img-cirlce" alt="...">
+        <div class="media-body">
+            <div class="profile">
+            <p *ngIf="userProfile.name"><span>Name:</span>&nbsp;&nbsp;{{userProfile.name}}</p>
+            <p *ngIf="userProfile.login"><span>Username:</span>&nbsp;&nbsp;{{userProfile.login}}</p>
+            <p><span>Followers:</span>&nbsp;&nbsp;{{userProfile.followers}}</p>
+            <p><span>Following:</span>&nbsp;&nbsp;{{userProfile.following}}</p>
+            <p *ngIf="userProfile.public_repos"><span>Number of public repositories:</span>&nbsp;&nbsp;{{userProfile.public_repos}}
+            </p>
+            <p *ngIf="userProfile.bio"><span>Bio:</span>&nbsp;&nbsp;{{userProfile.bio}}</p>
+            <p *ngIf="userProfile.created_at"><span>Created
+                on:</span>&nbsp;&nbsp;{{userProfile.created_at}}&nbsp;({{userProfile.created_at}}) days(s) ago</p>
+            <button ><a class="btn btn-default btn-block" target="_blank" href="{{userProfile.html_url}}">View Profile</a></button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,68 +1,31 @@
-<!-- <div class="container" style="padding: right 500px;">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title" style="text-align:center"><strong>Your Repositories</strong></h3>
-      </div>
-      <div class="panel-body">
-        <div *ngFor="let repo of repository">
-          <div class="row">
-            <div class="col-md-9">
-              <h4>
-                <a target="_blank" href="{{repo.html_url}}">{{repo.name}}</a>
-              </h4>
-              <p>Description:</p>
-              <br>
-              <p>{{repo.description}}</p>
-              <p>Language:</p>
-              <p>{{repo.language}}</p>
-              <p>Date created: {{repo.created_at}}</p>
 
+<div class="container fluid">
+    <h1 style="text-align: center;">Repositories</h1>
+    <br>
+    <div class="repo">
+        <div class="card" *ngFor="let repo of repository" style="width: 22rem;">
+            <div class="card-header">
+                <h5 class="card-title">{{repo.name}} </h5>
             </div>
-            <div class="col-md-3">
-                <button type="button" class="btn btn-primary">Forks <span class="badge">{{repo.forks}}</span></button>
-            </div>
-          </div>
-          <hr>
-        </div>
-      </div>
-    </div>
-</div> -->
-
-
-<div class="container-fluid">
-    <!-- <app-search-form (searchOutput)= "repoSearch($event)"></app-search-form> -->
-      <div class="container">
-          <div class="container repo">
-              <div class="card"*ngFor="let repo of repository" style="width: 22rem;" class="repo" >
-                <div class="card-body">
-                  <h5 class="card-title">{{repo.name}} </h5>
-                  <div class="card-text">
-                    <hr>
+            <div class="card-body">
+                <div class="card-text">
                     <div class="desc"><span class="top">Description:</span> &nbsp;{{repo.description}} 
                     </div>
                     <div class="card-subtitle mb-2">
                         <span class="top">Language: </span> {{repo.language}}
                     </div>
                     <div class="card-subtitle mb-2"><span class="top">Created On:</span> &nbsp;{{repo.created_at | date}}</div>
-                  </div>
-                  </div>
-                  <div class="card-footer">
-                  
-                      <button class="btn btn-sm btn-info"> {{repo.forks}}</button>
-                   
-                    
-                      <button class="btn btn-sm btn-outline-danger">Forks {{repo.forks}}</button>
-               
-                    
-                      <button class="btn btn-sm " id="visit"><a href="{{repo.html_url}}" class="card-link">Link &nbsp; </a> </button> 
-                
-                  </div>
-              </div>
+                </div>
             </div>
-      </div>
-  </div>
+            <div class="card-footer">
+                <button class="btn btn-sm btn-info"> {{repo.forks}}</button>&nbsp;
+                <button class="btn btn-sm btn-outline-danger">Forks {{repo.forks}}</button>&nbsp;
+                <button class="btn btn-sm btn-outline-danger" id="visit"><a href="{{repo.html_url}}" class="card-link">Visit &nbsp; </a> </button> 
 
-
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
