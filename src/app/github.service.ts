@@ -12,12 +12,15 @@ export class UserServiceService {
   userProfile:any;
   userRepo: any;
  
+ 
 
 
   constructor(private http:HttpClient,) {
     this.userProfile = new User ("","","","","",0,0,0,"",new Date);
     this.userRepo = new Repository ("","","",0,"",new Date)
    }
+
+   
 
    userRequest(username: string){
     interface ApiResponse{
@@ -34,12 +37,13 @@ export class UserServiceService {
     }
     return new Promise<void> ((resolve,reject)=>{
   
-      this.http.get<ApiResponse>('https://api.github.com/users/'+username).toPromise().then((response)=>{
+      this.http.get<ApiResponse>(`https://api.github.com/users/${username}`).toPromise().then((response)=>{
         this.userProfile = response;
         console.log(this.userProfile);
         resolve();
       },
       (error) => {
+        this.userProfile.login= "User not found"
         console.log(error);
         reject();
       }
@@ -47,7 +51,7 @@ export class UserServiceService {
   });
   }
 
-  repoRequest (username:string){
+  repoRequest (username:'ynyanchoka'){
     interface ApiResponseRepo{
       name:string,
       html_url:string ,
@@ -57,13 +61,14 @@ export class UserServiceService {
       created_at:Date,
     }
     return new Promise<void>((resolve,reject)=>{
-      this.http.get<ApiResponseRepo>('https://api.github.com/users/'+username+'/repos').toPromise().then(
-        (results) => {
-          this.userRepo = results;
+      this.http.get<ApiResponseRepo>(`https://api.github.com/users/${username}/repos`).toPromise().then(
+        (response) => {
+          this.userRepo = response;
           resolve();
         },
         (error) => {
-          console.log(error);
+          this.userProfile.name= "User not found"
+          console.log("an error occured");
           reject();
         }
       );
@@ -92,4 +97,5 @@ export class UserServiceService {
   //   })
   //   return promise
   //  }
+  // }
 }

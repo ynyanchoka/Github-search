@@ -1,0 +1,13 @@
+.repo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.card{
+    border-style: solid;
+    border-color: black;
+}
+.card-footer{
+    background-color: white;
+    
+}

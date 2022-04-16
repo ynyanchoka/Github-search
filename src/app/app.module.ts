@@ -10,6 +10,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FormsModule } from '@angular/forms';
 import { FormComponent } from './form/form.component';
+import { RepoComponent } from './repo/repo.component';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { FormComponent } from './form/form.component';
     AboutComponent,
     NavbarComponent,
     NotFoundComponent,
-    FormComponent
+    FormComponent,
+    RepoComponent,
+
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Repository } from '../classes/repository';
 import { User } from '../classes/user';
-import { UserServiceService } from '../user.service';
+import { UserServiceService } from '../github.service';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -11,11 +11,11 @@ export class UsersComponent implements OnInit {
 
   user!:User;
   repository!:Repository;
-  
+ 
 
   constructor(public userService: UserServiceService,public repoService:UserServiceService) { }
 
-  searchquerry(username: string) {
+  searchquerry(username: any) {
     this.userService.userRequest(username).then(
       ()=>{
         this.user = this.userService.userProfile;
@@ -25,10 +25,11 @@ export class UsersComponent implements OnInit {
       }
     );
     this.repoService.repoRequest(username).then(
-      ()=>{
+      (response)=>{
         this.repository = this.repoService.userRepo;
+      
       },
-      (error:any)=>{
+      (error)=>{
         console.log(error)
       }
     );
