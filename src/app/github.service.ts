@@ -3,6 +3,8 @@ import { User } from './classes/user';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Repository } from './classes/repository';
+import { observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +13,14 @@ export class UserServiceService {
 
   userProfile:any;
   userRepo: any;
+  username!: any;
  
  
 
 
   constructor(private http:HttpClient,) {
     this.userProfile = new User ("","","","","",0,0,0,"",new Date);
-    this.userRepo = new Repository ("","","",0,"",new Date)
+    this.userRepo = new Repository ("","","",0,"",new Date, 0)
    }
 
    
@@ -59,6 +62,7 @@ export class UserServiceService {
       forks:number,
       language:string,
       created_at:Date,
+      watchers_count: number,
     }
     return new Promise<void>((resolve,reject)=>{
       this.http.get<ApiResponseRepo>(`https://api.github.com/users/${username}/repos`).toPromise().then(
@@ -75,27 +79,17 @@ export class UserServiceService {
     });
 
   }
-        // this.userProfile.url = response!.url;
-        // this.userProfile.login = response!.login;
-        // this.userProfile.html_url = response!.html_url;
-        // this.userProfile.location = response!.location;
-        // this.userProfile. public_repos = response!. public_repos;
-        // this.userProfile.followers = response!.followers;
-        // this.userProfile.following = response!.following;
-        // this.userProfile.created_at = response!.created_at;
 
-      
+//   getUser() {
+//     return this.http.get('https://api.github.com/users/' + this.username)
+//     .map(result => result);
 
-  //       resolve()
-  //     },
-  //     (error)=>{
-  //       this.userProfile.login= "User not found"
-  //       console.log("an error occured")
-
-  //       reject(error)
-  //     })
-  //   })
-  //   return promise
-  //  }
-  // }
+//   }
+//   getRepos() {
+//     return this.http.get(' https://api.github.com/users/' + this.username + '/repos')
+//     .map(result => result);
+// }
+// updateUser(username: string) {
+//   this.username = username;
+// }
 }

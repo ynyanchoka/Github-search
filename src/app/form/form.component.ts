@@ -7,7 +7,7 @@ import { SearchUserComponent } from '../search-user/search-user.component';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
-  username!:string;
+  username!:any;
   @Output () searchOutput = new EventEmitter()
 
   constructor() { }

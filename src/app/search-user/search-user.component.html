@@ -1,19 +1,74 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Github User Search</h4>
+                </div>
+                <div class="card-body">
+                    <form action="" class="form-inline">
+                        <div class="form group">
+                            <input  type="text" placeholder="Github Username" name="username" [(ngModel)]="username"> &nbsp;&nbsp; <br><br>
+                            <button class="btn btn-info  btn-sm" (click) = "searchResult()" > Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container">
     <h2>Profile</h2>
     <div class="media">
-        <img src={{userProfile.avatar_url}} class="mr-3 img-responsive img-cirlce" alt="...">
-        <div class="media-body">
-            <div class="profile">
-            <p *ngIf="userProfile.name"><span>Name:</span>&nbsp;&nbsp;{{userProfile.name}}</p>
-            <p *ngIf="userProfile.login"><span>Username:</span>&nbsp;&nbsp;{{userProfile.login}}</p>
-            <p><span>Followers:</span>&nbsp;&nbsp;{{userProfile.followers}}</p>
-            <p><span>Following:</span>&nbsp;&nbsp;{{userProfile.following}}</p>
-            <p *ngIf="userProfile.public_repos"><span>Number of public repositories:</span>&nbsp;&nbsp;{{userProfile.public_repos}}
-            </p>
-            <p *ngIf="userProfile.bio"><span>Bio:</span>&nbsp;&nbsp;{{userProfile.bio}}</p>
-            <p *ngIf="userProfile.created_at"><span>Created
-                on:</span>&nbsp;&nbsp;{{userProfile.created_at}}&nbsp;({{userProfile.created_at}}) days(s) ago</p>
-            <button ><a class="btn btn-default btn-block" target="_blank" href="{{userProfile.html_url}}">View Profile</a></button>
+        <div class="row">
+            <div class="col-md-6">
+                <img src={{userProfile!.avatar_url}} class="mr-3 img-responsive img-cirlce" alt="...">
+            </div>
+
+        <div class="col-md-6">
+            <div class="media-body">
+                <div class="profile">
+                <p *ngIf="userProfile!.name"><span>Name:</span>&nbsp;&nbsp;{{userProfile!.name}}</p>
+                <p *ngIf="userProfile!.login"><span>Username:</span>&nbsp;&nbsp;{{userProfile!.login}}</p>
+                <p><span>Followers:</span>&nbsp;&nbsp;{{userProfile!.followers}}</p>
+                <p><span>Following:</span>&nbsp;&nbsp;{{userProfile!.following}}</p>
+                <p *ngIf="userProfile!.public_repos"><span>Number of public repositories:</span>&nbsp;&nbsp;{{userProfile!.public_repos}}
+                </p>
+                <p *ngIf="userProfile!.bio"><span>Bio:</span>&nbsp;&nbsp;{{userProfile!.bio}}</p>
+                <p *ngIf="userProfile!.created_at"><span>Created
+                    on:</span>&nbsp;&nbsp;{{userProfile!.created_at|date}}&nbsp; &nbsp;&nbsp;{{userProfile!.created_at|dateCount}} days(s) ago</p>
+                <button ><a class="btn btn-default btn-block" target="_blank" href="{{userProfile!.html_url}}">View Profile</a></button>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+<div class="container fluid">
+    <h1 style="text-align: center;">Repositories</h1>
+    <br>
+    <div class="repo">
+        <div class="card" style="width: 22rem;">
+            <div class="card-header">
+                <h5 *ngIf="userRepo.name" class="card-title">{{userRepo.name}} </h5>
+            </div>
+            <div class="card-body">
+                <div class="card-text">
+                    <div *ngIf="userRepo.name" class="desc"><span class="top">Description:</span> &nbsp;{{userRepo.description}} 
+                    </div>
+                    <div class="card-subtitle mb-2">
+                        <span *ngIf="userRepo.name" class="top">Language: </span> {{userRepo.language}}
+                    </div>
+                    <div *ngIf="userRepo.name" class="card-subtitle mb-2"><span class="top">Created On:</span> &nbsp;{{userRepo.created_at | date}}&nbsp; {{userRepo.created_at | dateCount}} days(s) ago</div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button *ngIf="userRepo.name" class="btn btn-sm btn-info"> {{userRepo.forks}}</button>&nbsp;
+                <button *ngIf="userRepo.name" class="btn btn-sm btn-outline-danger">Forks {{userRepo.forks}}</button>&nbsp;
+                <button *ngIf="userRepo.name" class="btn btn-sm btn-outline-danger" id="visit"><a href="{{userRepo.html_url}}" class="card-link">Visit &nbsp; </a> </button> 
+
             </div>
         </div>
     </div>

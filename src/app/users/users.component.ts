@@ -11,6 +11,8 @@ export class UsersComponent implements OnInit {
 
   user!:User;
   repository!:Repository;
+  username:any;
+
  
 
   constructor(public userService: UserServiceService,public repoService:UserServiceService) { }

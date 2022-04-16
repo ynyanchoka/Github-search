@@ -5,6 +5,7 @@ export class Repository {
         public description:string,
         public forks:number,
         public language:string,
-        public created_at:Date,){
+        public created_at:Date,
+        public watchers_count:number,){
       }
 }

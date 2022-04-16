@@ -12,6 +12,7 @@ import { FormComponent } from './form/form.component';
 import { RepoComponent } from './repo/repo.component';
 import { SearchUserComponent } from './search-user/search-user.component';
 import { UsersComponent } from './users/users.component';
+import { DateCountPipe } from './date-count.pipe';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { UsersComponent } from './users/users.component';
     FormComponent,
     RepoComponent,
     SearchUserComponent,
+    DateCountPipe,
 
   ],
   imports: [

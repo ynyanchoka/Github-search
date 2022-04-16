@@ -14,8 +14,10 @@ export class SearchUserComponent implements OnInit {
   userRepo!: Repository;
   userProfile!: User;
   username!: any ;
+  repository!: Repository;
 
-  constructor(private route: ActivatedRoute, private userService: UserServiceService) { }
+  constructor(private route: ActivatedRoute, private userService: UserServiceService) {}
+ 
 
 
   searchResult(){
