@@ -36,8 +36,7 @@
                 <p *ngIf="userProfile!.public_repos"><span>Number of public repositories:</span>&nbsp;&nbsp;{{userProfile!.public_repos}}
                 </p>
                 <p *ngIf="userProfile!.bio"><span>Bio:</span>&nbsp;&nbsp;{{userProfile!.bio}}</p>
-                <p *ngIf="userProfile!.created_at"><span>Created
-                    on:</span>&nbsp;&nbsp;{{userProfile!.created_at|date}}&nbsp; &nbsp;&nbsp;{{userProfile!.created_at|dateCount}} days(s) ago</p>
+                <p *ngIf="userProfile!.created_at"><span>Created on:</span>&nbsp;&nbsp;{{userProfile!.created_at|date}}&nbsp; &nbsp;&nbsp;{{userProfile!.created_at|dateCount}} day(s) ago</p>
                 <button ><a class="btn btn-default btn-block" target="_blank" href="{{userProfile!.html_url}}">View Profile</a></button>
                 </div>
             </div>
@@ -61,7 +60,7 @@
                     <div class="card-subtitle mb-2">
                         <span *ngIf="userRepo.name" class="top">Language: </span> {{userRepo.language}}
                     </div>
-                    <div *ngIf="userRepo.name" class="card-subtitle mb-2"><span class="top">Created On:</span> &nbsp;{{userRepo.created_at | date}}&nbsp; {{userRepo.created_at | dateCount}} days(s) ago</div>
+                    <div *ngIf="userRepo.name" class="card-subtitle mb-2"><span class="top">Created On:</span> &nbsp;{{userRepo.created_at | date}}&nbsp; {{userRepo.created_at | dateCount}} day(s) ago</div>
                 </div>
             </div>
             <div class="card-footer">
