@@ -1,0 +1,30 @@
+.card{
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+
+}
+.btn{
+    background-color: #6384a2;
+    color: white;
+
+}
+.btn.visit{
+    border-color:#6384a2;
+    background-color: white;
+}
+#visit{
+    color: white;
+}
+.btn-block{
+    background-color:#001d49 ;
+}
+.card.repo{
+    height: 500px; 
+    width:auto; 
+ }
+.mr-3 {
+    border-radius: 50%;
+}
+.media-body{
+    margin-top: 10px;
+}

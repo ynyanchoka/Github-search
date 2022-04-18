@@ -1,0 +1,11 @@
+*{
+    background-color: #314c6f;
+}
+.navbar-brand{
+    margin-left: 10px;
+    font-size: 30px;
+}
+.nav-item{
+    font-size: 20px;
+    justify-content: right;
+}
