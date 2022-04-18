@@ -22,3 +22,9 @@
     height: 500px; 
     width:auto; 
  }
+.mr-3 {
+    border-radius: 50%;
+}
+.media-body{
+    margin-top: 10px;
+}

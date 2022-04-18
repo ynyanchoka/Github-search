@@ -12,3 +12,9 @@ h2 {
     background-color:#001d49 ;
     color: white;
 }
+.mr-3 {
+    border-radius: 50%;
+}
+.media-body{
+    margin-top: 10px;
+}
