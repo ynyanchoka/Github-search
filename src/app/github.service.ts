@@ -3,7 +3,8 @@ import { User } from './classes/user';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Repository } from './classes/repository';
-import { observable } from 'rxjs';
+import { Observable } from 'rxjs';
+
 
 
 @Injectable({
@@ -25,71 +26,20 @@ export class UserServiceService {
 
    
 
-   userRequest(username: string){
-    interface ApiResponse{
-      name:string,
-      login:string, 
-      html_url:string,
-      bio: string,
-      location:string, 
-      public_repos:number,
-      followers:number,
-      following:number,
-      avatar_url:string,
-      created_at:Date
-    }
-    return new Promise<void> ((resolve,reject)=>{
-  
-      this.http.get<ApiResponse>(`https://api.github.com/users/${username}`).toPromise().then((response)=>{
-        this.userProfile = response;
-        console.log(this.userProfile);
-        resolve();
-      },
-      (error) => {
-        this.userProfile.login= "User not found"
-        console.log(error);
-        reject();
-      }
-    );
-  });
-  }
+   userRequest(username: string):Observable<User> {
 
-  repoRequest (username:'ynyanchoka'){
-    interface ApiResponseRepo{
-      name:string,
-      html_url:string ,
-      description:string,
-      forks:number,
-      language:string,
-      created_at:Date,
-      watchers_count: number,
-    }
-    return new Promise<void>((resolve,reject)=>{
-      this.http.get<ApiResponseRepo>(`https://api.github.com/users/${username}/repos`).toPromise().then(
-        (response) => {
-          this.userRepo = response;
-          resolve();
-        },
-        (error) => {
-          this.userProfile.name= "User not found"
-          console.log("an error occured");
-          reject();
-        }
-      );
-    });
+    return this.http.get<User>(`https://api.github.com/users/${username}?client_id=${environment.apiKey}`);
 
   }
 
-//   getUser() {
-//     return this.http.get('https://api.github.com/users/' + this.username)
-//     .map(result => result);
+  repoRequest (username:string): Observable<Array<Repository>> {
+    return this.http.get<Array<Repository>>(`https://api.github.com/users/${username}/repos?client_id=${environment.apiKey}`);
+  }
 
-//   }
-//   getRepos() {
-//     return this.http.get(' https://api.github.com/users/' + this.username + '/repos')
-//     .map(result => result);
-// }
-// updateUser(username: string) {
-//   this.username = username;
-// }
+  repoGet (repoName:string): Observable<Array<Repository>> {
+    return this.http.get<Array<Repository>>(`https://api.github.com/users/${this.username}/repos?client_id=${environment.apiKey}`);
+  }
+
+   
+
 }

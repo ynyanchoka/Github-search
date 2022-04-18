@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../classes/user';
 import { UserServiceService } from '../github.service';
 import { Repository } from '../classes/repository';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -11,21 +12,27 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./search-user.component.css']
 })
 export class SearchUserComponent implements OnInit {
-  userRepo!: Repository;
+  userRepo!: Array<Repository>;
   userProfile!: User;
-  username!: any ;
   repository!: Repository;
+  searchForm: FormGroup = new FormGroup({
+    "username": new FormControl("ynyanchoka", Validators.required),
+  
+  });
 
   constructor(private route: ActivatedRoute, private userService: UserServiceService) {}
  
 
 
   searchResult(){
-    this.username = this.route.snapshot.paramMap.get('username')
-    this.userService.userRequest(this.username)
-    this.userProfile = this.userService.userProfile
-    this.userService.repoRequest(this.username)
-    this.userRepo=this.userService.userRepo
+
+    let inputValue = this.searchForm.get("username")?.value;
+    this.userService.userRequest(inputValue).subscribe((res: User) => {
+      this.userProfile = res;
+    });
+    this.userService.repoRequest(inputValue).subscribe((res: Array<Repository>) => {
+      this.userRepo = res;
+    });
   }
 
   ngOnInit(){

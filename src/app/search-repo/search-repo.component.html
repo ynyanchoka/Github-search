@@ -3,12 +3,12 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h4>Github User Search</h4>
+                    <h4>Github Repo Search</h4>
                 </div>
                 <div class="card-body">
-                    <form class="form-inline" [formGroup]="searchForm" (ngSubmit)="searchResult()">
+                    <form class="form-inline" [formGroup]="searchForm" (ngSubmit)="searchGet()">
                         <div class="form group">
-                            <input  type="text" placeholder="Github Username" name="username" formControlName="username"> &nbsp;&nbsp; <br><br>
+                            <input  type="text" placeholder="Repo name" name="reponame" formControlName="reponame"> &nbsp;&nbsp; <br><br>
                             <button class="btn  btn-sm" type="submit"> Search</button>
                         </div>
                     </form>
@@ -18,36 +18,8 @@
     </div>
 </div>
 
-<div class="container">
-    <h1 style="text-align: center;" appStrikethrough >Profile</h1>
-    <br>
-    <div class="media">
-        <div class="row">
-            <div class="col-md-4">
-                <img src={{userProfile?.avatar_url}} class="mr-3 img-responsive img-cirlce" width="400" alt="...">
-            </div>
-
-        <div class="col-md-8">
-            <div class="media-body">
-                <div class="profile">
-                <p *ngIf="userProfile!.name"><span>Name:</span>&nbsp;&nbsp;{{userProfile?.name}}</p>
-                <p *ngIf="userProfile!.login"><span>Username:</span>&nbsp;&nbsp;{{userProfile?.login}}</p>
-                <p><span>Followers:</span>&nbsp;&nbsp;{{userProfile?.followers}}</p>
-                <p><span>Following:</span>&nbsp;&nbsp;{{userProfile?.following}}</p>
-                <p *ngIf="userProfile!.public_repos"><span>Number of public repositories:</span>&nbsp;&nbsp;{{userProfile?.public_repos}}
-                </p>
-                <p *ngIf="userProfile!.bio"><span>Bio:</span>&nbsp;&nbsp;{{userProfile?.bio}}</p>
-                <p *ngIf="userProfile!.created_at"><span>Created on:</span>&nbsp;&nbsp;{{userProfile?.created_at|date}}&nbsp; &nbsp;&nbsp;{{userProfile?.created_at|dateCount}} day(s) ago</p>
-                <a class="btn btn-default btn-block" target="_blank" href="{{userProfile?.html_url}}">View Profile</a>
-                </div>
-            </div>
-        </div>
-        </div>
-    </div>
-</div>
-<br><br>
 <div class="container fluid">
-    <h1 style="text-align: center;" appStrikethrough >Repositories</h1>
+    <h1 style="text-align: center;" appStrikethrough>Repositories</h1>
     <br>
     <div class="row">
         <div class="repo col-md-4" *ngFor="let userRepo of userRepo">

@@ -12,17 +12,24 @@ export class RepoComponent implements OnInit {
   repository!: Array<Repository>;
   constructor( public repoService: UserServiceService) { }
 
-  repoSearch(username:any){
-    this.repoService.repoRequest(username).then(
-      (response)=>{
-        this.repository =this.repoService.userRepo
-        console.log(this.repository);
-      },
-      (error)=>{
-        console.log(error);
-      }
-    );
+  
+  repoSearch(username:any) {
+    this.repoService.repoRequest(username).subscribe(res => {
+      this.repository = res;
+    });
   }
+
+  // repoSearch(username:any){
+  //   this.repoService.repoRequest(username).then(
+  //     (response)=>{
+  //       this.repository =this.repoService.userRepo
+  //       console.log(this.repository);
+  //     },
+  //     (error)=>{
+  //       console.log(error);
+  //     }
+  //   );
+  // }
 
   ngOnInit() {
     this.repoSearch('ynyanchoka');

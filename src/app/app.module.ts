@@ -7,13 +7,15 @@ import { HttpClientModule} from '@angular/common/http';
 import { AboutComponent } from './about/about.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { FormsModule } from '@angular/forms';
-import { FormComponent } from './form/form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// import { FormComponent } from './form/form.component';
 import { RepoComponent } from './repo/repo.component';
 import { SearchUserComponent } from './search-user/search-user.component';
 import { UsersComponent } from './users/users.component';
 import { DateCountPipe } from './date-count.pipe';
 import { StrikethroughDirective } from './strikethrough.directive';
+import { FormComponent } from './form/form.component';
+import { SearchRepoComponent } from './search-repo/search-repo.component';
 
 
 
@@ -25,10 +27,12 @@ import { StrikethroughDirective } from './strikethrough.directive';
     NavbarComponent,
     NotFoundComponent,
     FormComponent,
+    // FormComponent,
     RepoComponent,
     SearchUserComponent,
     DateCountPipe,
     StrikethroughDirective,
+    SearchRepoComponent,
    
 
   ],
@@ -36,7 +40,8 @@ import { StrikethroughDirective } from './strikethrough.directive';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

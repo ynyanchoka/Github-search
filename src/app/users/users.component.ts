@@ -10,32 +10,42 @@ import { UserServiceService } from '../github.service';
 export class UsersComponent implements OnInit {
 
   user!:User;
-  repository!:Repository;
+  repository!: Array<Repository>;
   username:any;
 
  
 
   constructor(public userService: UserServiceService,public repoService:UserServiceService) { }
 
+  
   searchquerry(username: any) {
-    this.userService.userRequest(username).then(
-      ()=>{
-        this.user = this.userService.userProfile;
-      },
-      (error)=>{
-        console.log(error)
-      }
-    );
-    this.repoService.repoRequest(username).then(
-      (response)=>{
-        this.repository = this.repoService.userRepo;
-      
-      },
-      (error)=>{
-        console.log(error)
-      }
-    );
+    this.userService.userRequest(username).subscribe(res => {
+      this.user = res;
+    });
+    this.repoService.repoRequest(username).subscribe(res => {
+      this.repository = res;
+    })
   }
+
+  // searchquerry(username: any) {
+  //   this.userService.userRequest(username).then(
+  //     ()=>{
+  //       this.user = this.userService.userProfile;
+  //     },
+  //     (error)=>{
+  //       console.log(error)
+  //     }
+  //   );
+  //   this.repoService.repoRequest(username).then(
+  //     (response)=>{
+  //       this.repository = this.repoService.userRepo;
+      
+  //     },
+  //     (error)=>{
+  //       console.log(error)
+  //     }
+  //   );
+  // }
   
   
 
