@@ -62,6 +62,9 @@
                         <div class="card-subtitle mb-2">
                             <span *ngIf="userRepo.name" class="top">Language: </span> {{userRepo.language}}
                         </div>
+                        <!-- <div class="card-subtitle mb-2" >
+                            <span class="top"></span> <a href="{{userRepo.homepage}}">Live link: </a> 
+                        </div> -->
                         <div *ngIf="userRepo.name" class="card-subtitle mb-2"><span class="top">Created On:</span> &nbsp;{{userRepo.created_at | date}}&nbsp; {{userRepo.created_at | dateCount}} day(s) ago</div>
                     </div>
                 </div>
