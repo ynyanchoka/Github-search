@@ -6,6 +6,7 @@ export class Repository {
         public forks:number,
         public language:string,
         public created_at:Date,
-        public watchers_count:number,){
+        public watchers_count:number,
+        public homepage: string,){
       }
 }

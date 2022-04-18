@@ -38,8 +38,8 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <button *ngIf="userRepo.name" class="btn btn-sm ">Watchers {{userRepo.forks}}</button>&nbsp;
-                    <button *ngIf="userRepo.name" class="btn btn-sm ">Forks {{userRepo.forks}}</button>&nbsp;
+                    <button *ngIf="userRepo.name" class="btn btn-sm "><i class="fa-solid fa-eye"></i>&nbsp;Watchers {{userRepo.forks}}</button>&nbsp;
+                    <button *ngIf="userRepo.name" class="btn btn-sm "><i class="fa-solid fa-code-fork"></i>&nbsp;Forks {{userRepo.forks}}</button>&nbsp;
                     <button *ngIf="userRepo.name" class="btn btn-sm visit " id="visit"><a href="{{userRepo.html_url}}" class="card-link">View &nbsp; </a> </button> 
                 </div>
             </div>
